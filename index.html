@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>中文生日祝福生成器</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="container">
+      <section class="panel form-panel">
+        <h1>🎂 中文生日祝福生成器</h1>
+        <p class="subtitle">根据关系、场景与语气，一键生成更贴合中文社交语境的生日祝福。</p>
+
+        <form id="blessing-form">
+          <div class="grid">
+            <label>
+              关系 <span class="required">*</span>
+              <select id="relationship" required>
+                <option value="">请选择关系</option>
+                <option>同事</option>
+                <option>领导</option>
+                <option>闺蜜</option>
+                <option>兄弟</option>
+                <option>爸爸</option>
+                <option>妈妈</option>
+                <option>客户</option>
+                <option>长辈</option>
+                <option>晚辈</option>
+                <option>老师</option>
+                <option>伴侣</option>
+                <option value="自定义">自定义</option>
+              </select>
+            </label>
+
+            <label id="custom-relationship-wrap" class="hidden">
+              自定义关系
+              <input id="custom-relationship" type="text" placeholder="例如：学长、邻居" />
+            </label>
+
+            <label>
+              对方姓名 <span class="required">*</span>
+              <input id="name" type="text" required placeholder="例如：小李" />
+            </label>
+
+            <label>
+              年龄（可选）
+              <input id="age" type="number" min="1" max="120" placeholder="例如：28" />
+            </label>
+
+            <label>
+              兴趣/爱好（可选）
+              <input id="hobby" type="text" placeholder="例如：摄影、跑步" />
+            </label>
+
+            <label>
+              场景 <span class="required">*</span>
+              <select id="scenario" required>
+                <option value="">请选择场景</option>
+                <option>正式短信</option>
+                <option>微信</option>
+                <option>卡片</option>
+                <option>朋友圈文案</option>
+                <option>邮件</option>
+              </select>
+            </label>
+
+            <label>
+              语气 <span class="required">*</span>
+              <select id="tone" required>
+                <option value="">请选择语气</option>
+                <option>正式</option>
+                <option>半正式</option>
+                <option>亲密</option>
+                <option>搞笑</option>
+                <option>文艺</option>
+                <option>简短</option>
+                <option>走心</option>
+              </select>
+            </label>
+
+            <label>
+              长度 <span class="required">*</span>
+              <select id="length" required>
+                <option value="">请选择长度</option>
+                <option>短（1-2句）</option>
+                <option>中（3-5句）</option>
+                <option>长（小短文）</option>
+              </select>
+            </label>
+          </div>
+
+          <fieldset>
+            <legend>祝福要点（可多选）</legend>
+            <div class="checkboxes">
+              <label><input type="checkbox" name="wishes" value="健康" /> 健康</label>
+              <label><input type="checkbox" name="wishes" value="事业" /> 事业</label>
+              <label><input type="checkbox" name="wishes" value="学业" /> 学业</label>
+              <label><input type="checkbox" name="wishes" value="家庭" /> 家庭</label>
+              <label><input type="checkbox" name="wishes" value="财富" /> 财富</label>
+              <label><input type="checkbox" name="wishes" value="好运" /> 好运</label>
+            </div>
+          </fieldset>
+
+          <label class="switch">
+            <input id="allow-emoji" type="checkbox" checked />
+            <span>允许 emoji（正式关系/场景会自动减少）</span>
+          </label>
+
+          <div class="buttons">
+            <button type="submit">生成祝福</button>
+            <button type="button" id="lucky-btn">我手气不错 / 随机填充</button>
+            <button type="button" id="copy-btn">复制</button>
+            <button type="button" id="reset-btn" class="ghost">清空</button>
+          </div>
+        </form>
+      </section>
+
+      <section class="panel preview-panel">
+        <h2>祝福预览</h2>
+        <article class="card" id="preview-card">
+          <p id="output">在左侧填写信息后点击“生成祝福”，这里会出现专属生日祝福。</p>
+        </article>
+      </section>
+    </main>
+
+    <section class="history panel">
+      <div class="history-header">
+        <h2>最近生成（最多 10 条）</h2>
+        <button type="button" id="clear-history" class="ghost">清空历史</button>
+      </div>
+      <ul id="history-list"></ul>
+    </section>
+
+    <template id="history-item-template">
+      <li class="history-item">
+        <div class="meta"></div>
+        <p class="text"></p>
+        <button class="copy-history">复制</button>
+      </li>
+    </template>
+
+    <script src="app.js"></script>
+  </body>
+</html>
