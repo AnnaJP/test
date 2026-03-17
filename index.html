@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Funny Birthday Card Writer</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="card-generator">
+      <h1>🎉 Funny Birthday Card Writer</h1>
+      <p>Enter a name, age, and hobby to get a silly birthday message.</p>
+
+      <form id="birthday-form" class="birthday-form">
+        <label>
+          Name
+          <input id="name" name="name" type="text" placeholder="Avery" required />
+        </label>
+
+        <label>
+          Age
+          <input id="age" name="age" type="number" min="1" max="130" placeholder="30" required />
+        </label>
+
+        <label>
+          Hobby
+          <input id="hobby" name="hobby" type="text" placeholder="gardening" required />
+        </label>
+
+        <button type="submit">Generate Message</button>
+      </form>
+
+      <section class="output">
+        <h2>Your Birthday Message</h2>
+        <p id="message" aria-live="polite">Your masterpiece will appear here... ✨</p>
+      </section>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
